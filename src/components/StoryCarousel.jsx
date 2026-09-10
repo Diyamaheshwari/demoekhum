@@ -10,7 +10,8 @@ const slides = [
     title: "150,000+ Children Learning to Read",
     quote: "When funds move transparently, classrooms fill with bright young minds holding their first books.",
     metric: "100% Verified Classrooms",
-    location: "Rural MP & Rajasthan"
+    location: "Rural MP & Rajasthan",
+    topic: "person"
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const slides = [
     title: "Mobile Clinics in Remote Villages",
     quote: "Every checkup and lifesaving immunization is linked back to real-time donor contribution receipts.",
     metric: "45,000+ Screenings Completed",
-    location: "Khandwa & Betul"
+    location: "Khandwa & Betul",
+    topic: "community"
   },
   {
     id: 3,
@@ -28,7 +30,8 @@ const slides = [
     title: "Daily Warm Meals Served with Dignity",
     quote: "Ensuring zero hunger in primary schools so every child stays energetic, nourished, and excited to learn.",
     metric: "1.2 Million Meals Disbursed",
-    location: "Chhindwara & Seoni"
+    location: "Chhindwara & Seoni",
+    topic: "person"
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ const slides = [
     title: "Solar Study Lamps & Digital Literacy",
     quote: "Empowering young girls to dream big and study safely late into the evening with clean solar energy.",
     metric: "12,000 Solar Study Lamps",
-    location: "Jhabua & Dhar"
+    location: "Jhabua & Dhar",
+    topic: "project"
   }
 ];
 
@@ -50,7 +54,7 @@ export default function StoryCarousel({ onOpenDonate, onOpenDeepDive }) {
     if (isPlaying) {
       timer = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % slides.length);
-      }, 5000);
+      }, 6000);
     }
     return () => clearInterval(timer);
   }, [isPlaying]);
@@ -66,34 +70,35 @@ export default function StoryCarousel({ onOpenDonate, onOpenDeepDive }) {
   const currentSlide = slides[currentIndex];
 
   return (
-    <section id="stories" className="py-20 bg-[#0F141C] text-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/15 rounded-full blur-[140px] pointer-events-none" />
+    <section id="stories" className="py-24 bg-[#0B0F17] text-white relative overflow-hidden">
+      {/* Background Lighting */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="space-y-2"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/15 border border-brand-orange/30 text-brand-orange font-extrabold text-xs uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-brand-orange font-black text-xs uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Real Human Stories</span>
+              <span>Cinematic Documentary Story</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white uppercase">
-              Visualizing the <span className="text-brand-orange">human impact</span>
+              HUMAN <span className="text-brand-orange">STORIES</span>
             </h2>
           </motion.div>
 
-          {/* Autoplay & Nav Controls */}
+          {/* Documentary Controls */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-              title={isPlaying ? "Pause Slideshow" : "Play Slideshow"}
+              title={isPlaying ? "Pause Documentary" : "Play Documentary"}
             >
               {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
             </button>
@@ -116,74 +121,75 @@ export default function StoryCarousel({ onOpenDonate, onOpenDeepDive }) {
           </div>
         </div>
 
-        {/* Cinematic Card Frame */}
-        <div className="relative rounded-3xl overflow-hidden bg-[#181E29] border border-white/10 shadow-2xl">
+        {/* Full-Screen Documentary Canvas (NO BOXED CARD BORDERS) */}
+        <div className="relative min-h-[480px] sm:min-h-[560px] rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/10">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.id}
-              initial={{ opacity: 0, scale: 0.98 }}
+              initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.02 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-12 min-h-[440px]"
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 w-full h-full flex flex-col justify-between p-8 sm:p-12 relative"
             >
-              {/* Large Image View */}
-              <div className="lg:col-span-7 relative overflow-hidden group min-h-[320px] lg:min-h-[440px]">
-                <img
-                  src={currentSlide.image}
-                  alt={currentSlide.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#181E29] via-transparent to-transparent lg:hidden" />
-                
-                <div className="absolute top-4 left-4 glass-dark px-3.5 py-1.5 rounded-full flex items-center gap-2 border border-white/20 text-xs font-bold text-white shadow-xl backdrop-blur-md">
+              {/* Full Background Photographic Scene */}
+              <img
+                src={currentSlide.image}
+                alt={currentSlide.title}
+                className="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-90 animate-pulse-slow"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/40 to-transparent" />
+
+              {/* Top Scene Tag */}
+              <div className="relative z-10 flex items-center justify-between">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-xs font-black uppercase text-white">
                   <Heart className="w-3.5 h-3.5 text-brand-orange fill-brand-orange" />
-                  <span>{currentSlide.category}</span>
+                  <span>{currentSlide.category} • {currentSlide.location}</span>
+                </div>
+
+                <div className="text-xs font-black uppercase tracking-widest text-emerald-400">
+                  ● {currentSlide.metric}
                 </div>
               </div>
 
-              {/* Story Copy */}
-              <div className="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                <div className="space-y-3">
-                  <span className="text-[11px] font-bold text-white/50 uppercase tracking-widest">
-                    {currentSlide.location}
-                  </span>
+              {/* Bottom Minimal Editorial Overlay */}
+              <div className="relative z-10 space-y-6 max-w-2xl mt-auto">
+                <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+                  "{currentSlide.quote}"
+                </h3>
 
-                  <h3 className="text-2xl font-black text-white leading-tight">
-                    "{currentSlide.quote}"
-                  </h3>
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => onOpenDeepDive(currentSlide.topic)}
+                    className="px-8 py-3.5 rounded-2xl bg-brand-orange hover:bg-white text-white hover:text-brand-dark font-black text-xs uppercase tracking-widest flex items-center gap-2 transition-all shadow-xl cursor-pointer"
+                  >
+                    <span>READ STORY</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.button>
+
+                  <button
+                    onClick={onOpenDonate}
+                    className="px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-black text-xs uppercase tracking-wider transition-all border border-white/20 cursor-pointer"
+                  >
+                    <span>SUPPORT CAUSE</span>
+                  </button>
                 </div>
+              </div>
 
-                <div className="space-y-5 border-t border-white/10 pt-5">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-[11px] text-white/50 font-medium">Verified Ground Result</div>
-                      <div className="text-lg font-black text-emerald-400">{currentSlide.metric}</div>
-                    </div>
-
-                    <button
-                      onClick={onOpenDonate}
-                      className="px-4 py-2 rounded-xl bg-brand-orange hover:bg-white text-white hover:text-brand-dark font-extrabold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-md cursor-pointer"
-                    >
-                      <span>Support</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-
-                  {/* Indicator Dots */}
-                  <div className="flex items-center gap-2 pt-1">
-                    {slides.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentIndex(idx)}
-                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          idx === currentIndex ? 'w-8 bg-brand-orange' : 'w-2 bg-white/20 hover:bg-white/40'
-                        }`}
-                        aria-label={`Go to story ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
+              {/* Indicator Dots */}
+              <div className="absolute bottom-6 right-8 z-10 flex items-center gap-2">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      idx === currentIndex ? 'w-8 bg-brand-orange' : 'w-2 bg-white/30 hover:bg-white/60'
+                    }`}
+                    aria-label={`Go to story ${idx + 1}`}
+                  />
+                ))}
               </div>
             </motion.div>
           </AnimatePresence>

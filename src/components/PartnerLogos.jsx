@@ -15,34 +15,47 @@ const partners = [
 
 export default function PartnerLogos() {
   return (
-    <section className="py-12 bg-[#FDFBF7] border-b border-brand-dark/5 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
-        <motion.p 
+    <section className="py-16 bg-[#FDFBF7] border-b border-brand-dark/5 overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 mb-8 text-center space-y-2">
+        <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs font-extrabold uppercase tracking-widest text-brand-dark/50"
+          className="text-xs font-black uppercase tracking-widest text-brand-orange"
         >
-          Trusted by Leaders Across Global Philanthropy & Grassroots Nonprofits
-        </motion.p>
+          Partner Ecosystem
+        </motion.span>
+        <motion.h3 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-xl sm:text-2xl font-black text-brand-dark uppercase tracking-tight"
+        >
+          Trusted by Leaders Across Global Philanthropy & Grassroots Non-Profits
+        </motion.h3>
       </div>
 
-      {/* Infinite Logo Marquee Strip */}
-      <div className="relative flex overflow-x-hidden group">
+      {/* Spatial Ecosystem Marquee */}
+      <div className="relative flex overflow-x-hidden group py-4">
+        {/* Soft Side Fades */}
+        <div className="absolute top-0 left-0 bottom-0 w-24 bg-gradient-to-r from-[#FDFBF7] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 bottom-0 w-24 bg-gradient-to-l from-[#FDFBF7] to-transparent z-10 pointer-events-none" />
+
         <motion.div 
           className="flex space-x-12 shrink-0 items-center justify-around min-w-full"
           animate={{ x: ['0%', '-50%'] }}
-          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
         >
           {[...partners, ...partners].map((partner, idx) => (
             <div 
               key={idx} 
-              className="h-10 md:h-12 flex items-center justify-center filter grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 transform hover:scale-110 cursor-pointer"
+              className="h-10 md:h-12 px-6 py-2 rounded-2xl bg-white/70 backdrop-blur-sm border border-brand-dark/5 shadow-sm flex items-center justify-center filter grayscale hover:grayscale-0 opacity-75 hover:opacity-100 transition-all duration-300 transform hover:scale-108 cursor-pointer"
             >
               <img 
                 src={partner.src} 
                 alt={partner.name} 
-                className="max-h-full max-w-[130px] object-contain"
+                className="max-h-full max-w-[120px] object-contain"
                 loading="lazy"
               />
             </div>
@@ -52,4 +65,3 @@ export default function PartnerLogos() {
     </section>
   );
 }
-
