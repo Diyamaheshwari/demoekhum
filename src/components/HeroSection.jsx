@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowDown, Heart, Sparkles, CheckCircle2, Shield, Lock, ExternalLink, Globe } from 'lucide-react';
+import { ArrowDown, Heart, Sparkles, CheckCircle2, Shield, Lock, ExternalLink, Globe, ArrowRight } from 'lucide-react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
 export default function HeroSection({ onOpenDonate, onOpenDeepDive }) {
@@ -76,7 +76,7 @@ export default function HeroSection({ onOpenDonate, onOpenDeepDive }) {
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* Left Column: Stark Editorial Headline + Minimal Action (6 Cols) */}
+          {/* Left Column: Stark Editorial Headline + Dynamic Buttons */}
           <div className="lg:col-span-6 flex flex-col items-start text-left space-y-6">
             
             {/* Live Motto Tag */}
@@ -119,25 +119,41 @@ export default function HeroSection({ onOpenDonate, onOpenDeepDive }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="flex flex-wrap items-center gap-4 pt-2"
+              className="space-y-3 pt-1 w-full"
             >
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                onClick={onOpenDonate}
-                className="px-9 py-4.5 rounded-2xl bg-brand-orange hover:bg-brand-dark text-white font-black text-xs uppercase tracking-widest flex items-center gap-2.5 transition-all shadow-xl shadow-brand-orange/30 border border-brand-orange cursor-pointer"
-              >
-                <Heart className="w-4 h-4 fill-white" />
-                <span>DONATE NOW →</span>
-              </motion.button>
+              <div className="flex flex-wrap items-center gap-4">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={onOpenDonate}
+                  className="px-9 py-4.5 rounded-2xl bg-brand-orange hover:bg-brand-dark text-white font-black text-xs uppercase tracking-widest flex items-center gap-2.5 transition-all shadow-xl shadow-brand-orange/30 border border-brand-orange cursor-pointer"
+                >
+                  <Heart className="w-4 h-4 fill-white animate-pulse" />
+                  <span>DONATE NOW</span>
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
 
-              <button
-                onClick={scrollToJourney}
-                className="px-6 py-4.5 text-xs font-black text-brand-dark hover:text-brand-orange uppercase tracking-wider flex items-center gap-2 transition-colors group cursor-pointer bg-white rounded-2xl border border-brand-dark/10 shadow-sm hover:shadow"
-              >
-                <span>FOLLOW THE IMPACT</span>
-                <ArrowDown className="w-4 h-4 text-brand-orange group-hover:translate-y-1 transition-transform" />
-              </button>
+                <button
+                  onClick={scrollToJourney}
+                  className="px-6 py-4.5 text-xs font-black text-brand-dark hover:text-brand-orange uppercase tracking-wider flex items-center gap-2 transition-colors group cursor-pointer bg-white rounded-2xl border border-brand-dark/10 shadow-sm hover:shadow"
+                >
+                  <span>EXPLORE IMPACT</span>
+                  <ArrowDown className="w-4 h-4 text-brand-orange group-hover:translate-y-1 transition-transform" />
+                </button>
+              </div>
+
+              {/* Micro Trust Signals */}
+              <div className="flex items-center gap-3 text-[11px] font-bold text-brand-dark/60">
+                <span className="flex items-center gap-1 text-emerald-700">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  0% Platform Fee
+                </span>
+                <span>•</span>
+                <span className="flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5 text-brand-orange" />
+                  Instant 80G Receipt
+                </span>
+              </div>
             </motion.div>
 
           </div>
@@ -245,7 +261,7 @@ export default function HeroSection({ onOpenDonate, onOpenDeepDive }) {
 
       {/* Visual Scroll Lead Line */}
       <div className="relative z-10 pt-6 pb-1 flex flex-col items-center justify-center gap-1 cursor-pointer mt-auto" onClick={scrollToJourney}>
-        <span className="text-[9px] font-black uppercase tracking-widest text-brand-dark/40">FOLLOW THE IMPACT</span>
+        <span className="text-[9px] font-black uppercase tracking-widest text-brand-dark/40">EXPLORE IMPACT</span>
         <div className="w-[2px] h-8 bg-brand-dark/15 relative overflow-hidden rounded-full">
           <motion.div
             animate={{ y: [0, 32] }}
