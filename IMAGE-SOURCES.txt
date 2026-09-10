@@ -1,0 +1,17 @@
+EKHUM IMAGE PROVENANCE
+
+Indian images generated using the built-in image-generation tool.
+These depict fictional illustrative scenes, not documented Ekhum programmes.
+
+india-learning.png
+Prompt: Create one premium natural editorial photograph for an Indian philanthropy website, landscape 3:2. An Indian woman educator in a simple cotton kurta and six Indian children ages 8-12 collaboratively learning with notebooks around a wooden table in a bright community learning centre in India. Dignified, candid, optimistic, authentic contemporary India, natural skin tones and anatomically realistic hands, soft daylight through windows, warm ivory plaster, subtle orange and green accents in clothing. Eye-level documentary composition, faces comfortably within centre two thirds for wide hero crop. No poverty spectacle, no posing toward camera, no text, no logos, no watermarks. This is an illustrative fictional scene.
+
+india-team.png
+Prompt: Create one premium natural editorial photograph for an Indian philanthropy website, landscape 3:2. Four Indian nonprofit professionals, women and men ages 25-50, in a contemporary Indian community organisation office, collaboratively reviewing printed programme records and a laptop around a table. Cotton kurtas and smart casual Indian clothing, authentic contemporary India, warm natural window light, indoor plants, off-white walls, quiet focused expressions. Documentary realism, candid interaction, anatomically correct hands, centre-composed subjects allowing both square and landscape crops. No visible readable text, no logos, no watermarks. This is an illustrative fictional scene.
+
+india-community.png
+Prompt: Create one premium natural editorial photograph for an Indian philanthropy website, landscape 3:2. Indian women and men volunteers organising and handing over unbranded boxes of educational supplies at a neighbourhood community centre in India. Equal partnership, agency, relaxed candid interaction, adults in cotton kurtas, salwar kameez and casual shirts, warm courtyard daylight, clean ochre plaster backdrop, authentic contemporary Indian setting. Refined documentary realism, natural skin, correct anatomy and hands, no distress, no poverty spectacle, no flags, no text, no logos or watermarks. Centre-composed people suitable for square crop. This is an illustrative fictional scene.
+
+reference-3.webp through reference-11.webp: organisation logos extracted
+from the user-supplied Ekhum_Philanthropy_OS_Shareable_v2.html.
+Manrope: Google Fonts, SIL Open Font License. Licence included in assets.
