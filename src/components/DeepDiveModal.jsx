@@ -1,74 +1,134 @@
 import React from 'react';
-import { X, ArrowRight, ShieldCheck, CheckCircle2, Zap, Layers, BarChart3, Database } from 'lucide-react';
+import { X, ArrowRight, ShieldCheck, CheckCircle2, Zap, Layers, BarChart3, Users, Globe, Building2, Lock, Receipt } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const deepDiveContent = {
-  platform: {
-    title: "Philanthropy OS Engine",
-    subtitle: "Complete Lifecycle Connection",
-    icon: Layers,
-    tagline: "Unifying donor journeys, bank disbursals, 80G tax receipts, and verified ground outcomes.",
+  project: {
+    title: "Verified Field Projects",
+    subtitle: "Direct Ground Execution",
+    icon: Building2,
+    tagline: "Every project is directly mapped to ground NGO partners, school nutrition programs, and rural healthcare units.",
     stats: [
-      { label: "Data Latency", value: "< 100ms" },
-      { label: "Audit Precision", value: "100% Rupee" },
+      { label: "Active Projects", value: "100+" },
+      { label: "Geo-Tagged Proof", value: "100%" },
+      { label: "NGO Partners", value: "40+" }
+    ],
+    highlights: [
+      "Direct Ground Project Allocation: Donations fund pre-verified education, health, and nutrition projects.",
+      "Geo-Tagged Milestone Proof: Photo and timestamp reports uploaded directly by ground coordinators.",
+      "Zero-Loss Disbursal Rail: Funds transfer directly to project bank accounts without intermediate retention cuts."
+    ]
+  },
+  person: {
+    title: "Individual Beneficiary Impact",
+    subtitle: "Direct Human Connection",
+    icon: Users,
+    tagline: "Connecting donor generosity directly to real children, students, and rural families across India.",
+    stats: [
+      { label: "Lives Touched", value: "50,000+" },
+      { label: "Meals Disbursed", value: "1.2M+" },
+      { label: "Direct Impact", value: "100%" }
+    ],
+    highlights: [
+      "Direct Child & Family Benefit: ₹500 provides 10 warm nutritious meals directly to primary school children.",
+      "Dignified Storytelling: Full privacy, dignity, and consent maintained for all beneficiary outcome records.",
+      "Individual Ledger Tracking: Trace your specific contribution directly to the exact cohort of children served."
+    ]
+  },
+  community: {
+    title: "Community Infrastructure",
+    subtitle: "Sustainable Regional Development",
+    icon: Globe,
+    tagline: "Empowering rural villages with clean solar power, digital literacy centers, and mobile clinics.",
+    stats: [
+      { label: "Solar Lamps", value: "12,000+" },
+      { label: "Health Screenings", value: "45,000+" },
+      { label: "Classrooms", value: "150+" }
+    ],
+    highlights: [
+      "Solar & Digital Literacy: Providing solar study lamps to young girls for safe evening studying.",
+      "Mobile Village Health Clinics: Deploying doctors and diagnostic checkups to remote tribal regions.",
+      "School Infrastructure: Grants for school sanitation, drinking water units, and digital learning tools."
+    ]
+  },
+  outcome: {
+    title: "Cryptographic Ground Ledger",
+    subtitle: "100% Verifiable Evidence",
+    icon: Lock,
+    tagline: "Every transaction creates an append-only audit record linked to verified ground outcome evidence.",
+    stats: [
+      { label: "Discrepancy", value: "0%" },
+      { label: "Audit Trail", value: "Immutable" },
       { label: "Filing Ready", value: "Form 10BD" }
     ],
     highlights: [
-      "Multi-Currency & Local Domain Support: Host campaigns on your own domain with native UPI Autopay and e-NACH mandates.",
-      "Instant 80G Tax Receipting: Automated sequential receipt generation issued immediately upon bank settlement.",
-      "FCRA Compliance Layer: Dedicated foreign contribution accounts with automated purpose-wise allocation tagging.",
-      "Ground Outcome Verification: Connect direct photographic & geo-tagged milestone reports directly to specific donor transactions."
+      "Append-Only Audit Ledger: Every rupee movement is time-stamped and signed on a tamper-proof trail.",
+      "Instant 80G Receipts: Automated tax certificates generated and delivered via WhatsApp instantly.",
+      "Nightly Bank Match: Gateway settlement, bank credit, and disbursal reports reconciled automatically."
+    ]
+  },
+  platform: {
+    title: "0% Platform Retention Rail",
+    subtitle: "100% Direct Disbursal Protocol",
+    icon: Layers,
+    tagline: "Zero platform fees retained from your donations—100% reaches verified ground beneficiaries.",
+    stats: [
+      { label: "Platform Fee", value: "0%" },
+      { label: "Payment Rail", value: "Instant UPI" },
+      { label: "Data Latency", value: "< 100ms" }
+    ],
+    highlights: [
+      "0% Fee Guarantee: Ekhum operates with zero platform commission on ground donations.",
+      "Instant UPI & Card Rails: High-concurrency UPI Autopay and e-NACH mandate integration.",
+      "Own Domain Campaigns: Non-profits host direct disbursal campaigns on their native web domains."
     ]
   },
   technology: {
-    title: "Real-Time Event Engine",
-    subtitle: "Automated Philanthropy Logistics",
+    title: "Statutory & Tax Verification",
+    subtitle: "Instant 80G & Form 10BD Engine",
     icon: Zap,
-    tagline: "Eleven core event streams powering automated notifications, gateway routing, and tax filing schemas.",
+    tagline: "Automated Income Tax India compliance pre-structuring and instant donor receipting.",
     stats: [
-      { label: "Smart Routing", value: "4 Gateways" },
-      { label: "Payment Failover", value: "+3% Recovery" },
-      { label: "Event Bus", value: "11 Streams" }
+      { label: "Form 10BD", value: "Automated" },
+      { label: "Receipt Format", value: "WhatsApp PDF" },
+      { label: "Tax Exemption", value: "Section 80G" }
     ],
     highlights: [
-      "Dynamic Gateway Failover: Automatically reroutes failed transactions across Razorpay, PayU, CCAvenue, and Worldline.",
-      "Form 10BD Engine: Pre-structures donor identification and transaction records according to Income Tax India schemas.",
-      "Automated WhatsApp Journeys: Send instant receipt PDFs, sponsor updates, and impact milestones directly to donors.",
-      "Nightly Bank Reconciliation: Automated tri-way matching of gateway settlement reports, bank credits, and ledger entries."
+      "Instant 80G Receipts: Automated tax exempt certificates delivered instantly upon donation completion.",
+      "Form 10BD Pre-Structuring: Donor PAN and transaction records structured according to Income Tax schemas.",
+      "Gateway Failover Engine: Dynamic routing across Razorpay, PayU, and CCAvenue prevents payment drops."
     ]
   },
   trust: {
-    title: "Trust, FCRA & Compliance",
-    subtitle: "Bank-Grade Accountability Built-In",
+    title: "FCRA & Sovereign Data Trust",
+    subtitle: "Bank-Grade Regulatory Compliance",
     icon: ShieldCheck,
-    tagline: "Eliminating manual audit work with an immutable time-stamped log of every rupee raised and spent.",
+    tagline: "Strict FCRA separation, SBI New Delhi bank reconciliation, and Indian sovereign cloud data residency.",
     stats: [
-      { label: "Audit Log", value: "Immutable" },
-      { label: "Data Residency", value: "Local Sovereign" },
+      { label: "FCRA Sync", value: "SBI Delhi" },
+      { label: "Cloud Border", value: "Indian Sovereign" },
       { label: "Access Control", value: "Role-Based" }
     ],
     highlights: [
-      "Strict FCRA Separation: Intelligent routing isolates domestic vs foreign funds at the gateway level.",
-      "Cryptographic Audit Trail: Every modification to donations, disbursals, or beneficiary files is logged with author identity.",
-      "Granular Role Permissions: Custom dashboards tailored for finance teams, auditors, fundraisers, and board members.",
-      "Automated Discrepancy Alerts: Flag unmatched bank entries or duplicate receipts immediately before end-of-month closing."
+      "FCRA Foreign Fund Segregation: Dedicated SBI New Delhi account routing for foreign contributions.",
+      "Sovereign Data Residency: 100% donor data hosted strictly within Indian Tier-4 data center borders.",
+      "Role-Based Governance: Granular permissions for finance teams, auditors, and board members."
     ]
   },
   funders: {
-    title: "Institutional Funder Suite",
-    subtitle: "Live Impact Dashboards for CSR & Foundations",
+    title: "Institutional & CSR Suite",
+    subtitle: "Corporate & Foundation Grant Management",
     icon: BarChart3,
-    tagline: "Empowering CSR heads, global foundations, and HNIs with transparent grant utilization tracking.",
+    tagline: "Empowering CSR heads and global foundations with real-time tranche disbursal tracking.",
     stats: [
-      { label: "Utilization View", value: "Real-Time" },
-      { label: "Grant Terms", value: "Code Enforced" },
-      { label: "Export Format", value: "Audit-Ready" }
+      { label: "Disbursal Terms", value: "Code Enforced" },
+      { label: "Portfolio View", value: "Real-Time" },
+      { label: "Board Exports", value: "Audit-Ready" }
     ],
     highlights: [
-      "Grant Terms as Code: Set tranche disbursal triggers based on verified field milestone completions.",
-      "Portfolio Reporting: View aggregated metrics across multiple partner implementation NGOs in a single view.",
-      "Direct Impact Linkage: See exactly which beneficiary cohort received support from specific grant disbursements.",
-      "One-Click Board Exports: Generate comprehensive impact and financial reporting decks in seconds."
+      "Grant Terms as Code: Disbursal tranches unlock upon verified ground milestone submission.",
+      "Aggregated Portfolio Reporting: View multi-NGO implementation programs in a unified dashboard.",
+      "Audit-Ready Exports: One-click board and statutory report decks generated in seconds."
     ]
   }
 };
@@ -104,13 +164,13 @@ export default function DeepDiveModal({ activeTopic, onClose, onOpenDemo }) {
                   <IconComponent className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-xs uppercase tracking-wider text-brand-orange font-bold">Deep Dive</span>
+                  <span className="text-xs uppercase tracking-wider text-brand-orange font-bold">Verified Deep Dive</span>
                   <h3 className="text-xl font-bold text-brand-dark">{content.title}</h3>
                 </div>
               </div>
               <button 
                 onClick={onClose}
-                className="p-2 rounded-full hover:bg-brand-dark/5 text-brand-dark/60 hover:text-brand-dark transition-colors"
+                className="p-2 rounded-full hover:bg-brand-dark/5 text-brand-dark/60 hover:text-brand-dark transition-colors cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -135,7 +195,7 @@ export default function DeepDiveModal({ activeTopic, onClose, onOpenDemo }) {
 
               {/* Highlights List */}
               <div className="space-y-4">
-                <h5 className="text-sm font-bold uppercase tracking-wider text-brand-dark/50">Core Technical Capabilities</h5>
+                <h5 className="text-sm font-bold uppercase tracking-wider text-brand-dark/50">Core Operational Capabilities</h5>
                 <div className="space-y-3">
                   {content.highlights.map((item, idx) => (
                     <div key={idx} className="flex gap-3 bg-white p-4 rounded-xl border border-brand-dark/5 shadow-sm">
@@ -151,14 +211,14 @@ export default function DeepDiveModal({ activeTopic, onClose, onOpenDemo }) {
           {/* Footer Call to Action */}
           <div className="p-6 bg-brand-dark text-white flex items-center justify-between gap-4 border-t border-white/10">
             <div>
-              <p className="text-xs text-white/60">Ready to transform your giving operations?</p>
-              <p className="text-sm font-semibold">Book a personalized platform walkthrough</p>
+              <p className="text-xs text-white/60">Ready to transform your impact?</p>
+              <p className="text-sm font-semibold">Join thousands of verified donors today</p>
             </div>
             <button
               onClick={() => { onClose(); onOpenDemo(); }}
-              className="px-5 py-2.5 rounded-full bg-brand-orange hover:bg-brand-orange/90 text-white text-sm font-bold flex items-center gap-2 transition-all shrink-0 shadow-lg shadow-brand-orange/20"
+              className="px-5 py-2.5 rounded-full bg-brand-orange hover:bg-brand-orange/90 text-white text-sm font-bold flex items-center gap-2 transition-all shrink-0 shadow-lg shadow-brand-orange/20 cursor-pointer"
             >
-              <span>Schedule Demo</span>
+              <span>Explore More</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

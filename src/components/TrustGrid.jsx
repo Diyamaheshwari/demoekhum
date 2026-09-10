@@ -1,145 +1,108 @@
-import React, { useRef } from 'react';
-import { ShieldCheck, Lock, Landmark, FileText, UserCheck, RefreshCw, ArrowRight, Check, ChevronLeft, ChevronRight, Shield } from 'lucide-react';
+import React from 'react';
+import { ShieldCheck, Lock, Landmark, FileText, ExternalLink, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const trustModules = [
-  {
-    id: "80g",
-    icon: FileText,
-    title: "Instant 80G Tax Receipts",
-    badge: "100% Tax Exempt",
-    image: "assets/trust_tax_80g.jpg",
-    desc: "Instant 80G tax certificates generated automatically via WhatsApp & Email.",
-    chips: ["Sequential 80G", "Form 10BD Auto", "WhatsApp PDF"]
-  },
-  {
-    id: "fcra",
-    icon: Landmark,
-    title: "FCRA Bank Reconciliation",
-    badge: "FCRA Approved",
-    image: "assets/trust_fcra_audit.jpg",
-    desc: "Automated routing directly into designated SBI New Delhi FCRA bank account.",
-    chips: ["SBI FCRA Sync", "Foreign Stream", "MHA Approved"]
-  },
-  {
-    id: "audit",
-    icon: Lock,
-    title: "Cryptographic Audit Ledger",
-    badge: "Tamper Proof",
-    image: "assets/funder_trust_vision.jpg",
-    desc: "Every rupee logged on an immutable, cryptographic audit ledger.",
-    chips: ["Crypto Hash", "Author Log", "Auditor Portal"]
-  },
-  {
-    id: "sovereign",
-    icon: ShieldCheck,
-    title: "Sovereign Data Residency",
-    badge: "RBI Compliant",
-    image: "assets/tech_form10bd_tax.jpg",
-    desc: "100% donor data hosted strictly within Indian sovereign cloud borders.",
-    chips: ["Tier-4 Cloud", "RBI Compliant", "AES-256"]
-  }
+const orbitNodes = [
+  { id: "80g", label: "80G TAX EXEMPT", icon: FileText, topic: "trust", color: "border-blue-500 text-blue-600 bg-blue-50" },
+  { id: "fcra", label: "FCRA BANK COMPLIANT", icon: Landmark, topic: "trust", color: "border-emerald-500 text-emerald-600 bg-emerald-50" },
+  { id: "audit", label: "VERIFIED LEDGER", icon: Lock, topic: "technology", color: "border-amber-500 text-amber-600 bg-amber-50" },
+  { id: "transparent", label: "0% PLATFORM FEE", icon: ShieldCheck, topic: "platform", color: "border-brand-orange text-brand-orange bg-brand-orange/10" }
 ];
 
 export default function TrustGrid({ onOpenDeepDive }) {
-  const scrollRef = useRef(null);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -360, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 360, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="trust" className="py-16 md:py-20 bg-[#FDFBF7] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
+    <section id="trust" className="py-20 bg-[#FDFBF7] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 space-y-12 relative z-10">
         
-        {/* Section Header & Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-2"
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-xs font-black uppercase tracking-widest">
-              <Shield className="w-3.5 h-3.5" />
-              <span>Trust & Governance</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight text-brand-dark uppercase">
-              Good deserves <span className="text-brand-orange">confidence</span>
-            </h2>
-          </motion.div>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={scrollLeft}
-              className="p-3 rounded-full bg-white border border-brand-dark/10 hover:border-emerald-500 text-brand-dark transition-all shadow-sm cursor-pointer"
-              aria-label="Scroll Left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <button
-              onClick={scrollRight}
-              className="p-3 rounded-full bg-white border border-brand-dark/10 hover:border-emerald-500 text-brand-dark transition-all shadow-sm cursor-pointer"
-              aria-label="Scroll Right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+        {/* Section Header */}
+        <div className="text-center max-w-xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-xs font-black uppercase tracking-widest">
+            <Shield className="w-3.5 h-3.5" />
+            <span>Governance & Trust</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-brand-dark tracking-tight uppercase">
+            EXPLORE <span className="text-brand-orange">TRUST</span>
+          </h2>
+          <p className="text-xs sm:text-sm text-brand-dark/70 font-semibold">
+            Hover or click any node to explore statutory compliance proofs.
+          </p>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trustModules.map((item, idx) => {
-            const IconComp = item.icon;
+        {/* Interactive Orbiting Visual Environment */}
+        <div className="relative w-full max-w-2xl mx-auto aspect-square sm:aspect-[16/10] flex items-center justify-center">
+          
+          {/* Orbit Rings */}
+          <div className="absolute w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] rounded-full border-2 border-dashed border-brand-dark/15 pointer-events-none animate-spin-slow" />
 
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                onClick={() => onOpenDeepDive('trust')}
-                className="rounded-2xl bg-white border border-brand-dark/10 hover:border-emerald-500/40 shadow-md hover:shadow-xl transition-all overflow-hidden cursor-pointer flex flex-col justify-between group"
-              >
-                <div className="p-6 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-700">
-                      <IconComp className="w-5 h-5" />
-                    </div>
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/10 text-emerald-700">
-                      {item.badge}
-                    </span>
-                  </div>
+          {/* Central Ekhum Node Symbol */}
+          <motion.div
+            whileHover={{ scale: 1.06 }}
+            onClick={() => onOpenDeepDive('trust')}
+            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-brand-dark text-white p-2 shadow-2xl flex flex-col items-center justify-center text-center border-4 border-white cursor-pointer z-20 group"
+          >
+            <Shield className="w-8 h-8 text-brand-orange mb-1 group-hover:scale-110 transition-transform" />
+            <span className="text-sm font-black tracking-tight">EKHUM</span>
+            <span className="text-[9px] font-bold text-white/60 uppercase tracking-widest">TRUST ORBIT</span>
+          </motion.div>
 
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-black text-brand-dark uppercase tracking-tight group-hover:text-brand-orange transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs font-medium text-brand-dark/70 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
+          {/* 4 Orbiting Compliance Nodes */}
+          
+          {/* Node 1: 80G (Top Left) */}
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            onClick={() => onOpenDeepDive('trust')}
+            className="absolute top-4 left-4 sm:top-8 sm:left-12 p-3 px-4 rounded-2xl bg-white border-2 border-blue-500 shadow-xl flex items-center gap-2 cursor-pointer z-30 group"
+          >
+            <FileText className="w-4 h-4 text-blue-600" />
+            <div className="text-left">
+              <span className="text-[10px] font-black text-brand-dark uppercase tracking-wider block">80G TAX EXEMPT</span>
+              <span className="text-[9px] text-brand-dark/60 font-semibold">Auto PDF Receipt</span>
+            </div>
+            <ExternalLink className="w-3.5 h-3.5 text-brand-dark/40 group-hover:text-blue-600 ml-1" />
+          </motion.button>
 
-                <div className="px-6 py-3 bg-[#FDFBF7] border-t border-brand-dark/5 flex items-center justify-between text-xs font-bold text-brand-dark/60 group-hover:text-brand-orange transition-colors">
-                  <span>View Proof Specs</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </motion.div>
-            );
-          })}
+          {/* Node 2: FCRA (Top Right) */}
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            onClick={() => onOpenDeepDive('trust')}
+            className="absolute top-4 right-4 sm:top-8 sm:right-12 p-3 px-4 rounded-2xl bg-white border-2 border-emerald-500 shadow-xl flex items-center gap-2 cursor-pointer z-30 group"
+          >
+            <Landmark className="w-4 h-4 text-emerald-600" />
+            <div className="text-left">
+              <span className="text-[10px] font-black text-brand-dark uppercase tracking-wider block">FCRA COMPLIANT</span>
+              <span className="text-[9px] text-brand-dark/60 font-semibold">SBI Bank Sync</span>
+            </div>
+            <ExternalLink className="w-3.5 h-3.5 text-brand-dark/40 group-hover:text-emerald-600 ml-1" />
+          </motion.button>
+
+          {/* Node 3: VERIFIED LEDGER (Bottom Left) */}
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            onClick={() => onOpenDeepDive('technology')}
+            className="absolute bottom-4 left-4 sm:bottom-8 sm:left-12 p-3 px-4 rounded-2xl bg-white border-2 border-amber-500 shadow-xl flex items-center gap-2 cursor-pointer z-30 group"
+          >
+            <Lock className="w-4 h-4 text-amber-600" />
+            <div className="text-left">
+              <span className="text-[10px] font-black text-brand-dark uppercase tracking-wider block">VERIFIED LEDGER</span>
+              <span className="text-[9px] text-brand-dark/60 font-semibold">Tamper Proof Hash</span>
+            </div>
+            <ExternalLink className="w-3.5 h-3.5 text-brand-dark/40 group-hover:text-amber-600 ml-1" />
+          </motion.button>
+
+          {/* Node 4: 0% PLATFORM FEE (Bottom Right) */}
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            onClick={() => onOpenDeepDive('platform')}
+            className="absolute bottom-4 right-4 sm:bottom-8 sm:right-12 p-3 px-4 rounded-2xl bg-white border-2 border-brand-orange shadow-xl flex items-center gap-2 cursor-pointer z-30 group"
+          >
+            <ShieldCheck className="w-4 h-4 text-brand-orange" />
+            <div className="text-left">
+              <span className="text-[10px] font-black text-brand-dark uppercase tracking-wider block">0% PLATFORM FEE</span>
+              <span className="text-[9px] text-brand-dark/60 font-semibold">100% Ground Delivery</span>
+            </div>
+            <ExternalLink className="w-3.5 h-3.5 text-brand-dark/40 group-hover:text-brand-orange ml-1" />
+          </motion.button>
+
         </div>
 
       </div>

@@ -1,94 +1,71 @@
 import React from 'react';
-import { Building2, Coins, Receipt, Percent } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const statsData = [
   {
-    icon: Coins,
-    number: "1,24,830",
-    unit: "Meals Delivered",
-    desc: "100% Direct Ground Impact",
-    color: "text-brand-orange",
-    bg: "bg-brand-orange/10",
-    topic: "platform"
+    number: "50,000+",
+    label: "LIVES TOUCHED",
+    sub: "Direct ground outcomes verified across 40+ NGO partners.",
+    color: "text-brand-orange"
   },
   {
-    icon: Building2,
-    number: "40+",
-    unit: "Verified Non-Profits",
-    desc: "Global & Indian NGO Partners",
-    color: "text-brand-emerald",
-    bg: "bg-brand-emerald/10",
-    topic: "funders"
+    number: "100+",
+    label: "PROJECTS COMPLETED",
+    sub: "100% direct disbursal with 0% platform retention cut.",
+    color: "text-brand-dark"
   },
   {
-    icon: Receipt,
     number: "₹1B+",
-    unit: "Capital Mobilised",
-    desc: "100% Cryptographic Ledger",
-    color: "text-amber-600",
-    bg: "bg-amber-500/10",
-    topic: "trust"
+    label: "CAPITAL MOBILISED",
+    sub: "Cryptographically reconciled append-only audit ledger.",
+    color: "text-emerald-600"
   },
   {
-    icon: Percent,
     number: "0%",
-    unit: "Platform Retention Fee",
-    desc: "Zero Retention Cut Taken",
-    color: "text-purple-600",
-    bg: "bg-purple-500/10",
-    topic: "technology"
+    label: "PLATFORM FEE",
+    sub: "Zero platform fee retained from ground donations.",
+    color: "text-amber-600"
   }
 ];
 
 export default function ExperienceStats({ onOpenDeepDive }) {
   return (
-    <section id="impact" className="py-16 md:py-20 bg-white border-y border-brand-dark/5 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 space-y-10 relative z-10">
+    <section id="impact" className="py-24 bg-white border-y border-brand-dark/5 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 space-y-16 relative z-10">
         
-        {/* Intro */}
+        {/* Section Intro */}
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <h2 className="text-2xl sm:text-4xl font-black text-brand-dark tracking-tight uppercase">
-            Impact <span className="text-brand-orange">By The Numbers</span>
+          <span className="text-xs font-black uppercase tracking-widest text-brand-orange">
+            Verified Scale
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black text-brand-dark tracking-tight uppercase">
+            SEE THE <span className="text-brand-orange">NUMBERS</span>
           </h2>
-          <p className="text-xs sm:text-sm text-brand-dark/70 font-semibold">
-            Every metric is backed by real-time cryptographic audit trails and verified ground disbursals.
-          </p>
         </div>
 
-        {/* 4 Immersive Stat Counter Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {statsData.map((stat, idx) => {
-            const IconComp = stat.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                onClick={() => onOpenDeepDive(stat.topic)}
-                className="group cursor-pointer p-6 rounded-2xl bg-[#FDFBF7] border border-brand-dark/10 hover:border-brand-orange/40 hover:shadow-xl transition-all relative overflow-hidden text-center"
-              >
-                <div className="inline-flex p-3 rounded-2xl mb-3 ${stat.bg} ${stat.color} transition-transform group-hover:scale-110">
-                  <IconComp className={`w-6 h-6 ${stat.color}`} />
-                </div>
-
-                <div className="space-y-1">
-                  <h3 className="text-3xl sm:text-4xl font-black text-brand-dark tracking-tight uppercase">
-                    {stat.number}
-                  </h3>
-                  <p className="text-xs font-extrabold uppercase tracking-wider text-brand-orange">
-                    {stat.unit}
-                  </p>
-                  <p className="text-[11px] text-brand-dark/60 font-semibold pt-1">
-                    {stat.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+        {/* Oversized Typographic Visual Environment with Generous Whitespace */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {statsData.map((stat, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.94 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              onClick={() => onOpenDeepDive('platform')}
+              className="space-y-2 cursor-pointer group p-6 rounded-3xl hover:bg-[#FDFBF7] transition-all"
+            >
+              <h3 className={`text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none ${stat.color} group-hover:scale-103 transition-transform duration-300`}>
+                {stat.number}
+              </h3>
+              <div className="text-base sm:text-lg font-black text-brand-dark uppercase tracking-wider">
+                {stat.label}
+              </div>
+              <p className="text-xs sm:text-sm text-brand-dark/70 font-semibold max-w-sm leading-relaxed">
+                {stat.sub}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
       </div>
